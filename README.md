@@ -52,15 +52,16 @@ The output is a continuous **Seizure Score** (risk score ∈ [0, 1]), enabling b
 
 ## Benchmark Methods
 
-Six representative prior works are reproduced as controlled baselines. Each method is implemented in its own subfolder under [`benchmark/`](benchmark/).
+Six representative prior works are reproduced as controlled baselines. Each method is linked below; DCRNN and TDA-CNN share one controlled-baseline folder because they use the same split, thresholding, metric, and cache-export utilities.
 
-| Folder | Paper | Venue | Model |
-|--------|-------|-------|-------|
+| Implementation | Paper | Venue | Model |
+|----------------|-------|-------|-------|
 | [`Xu2026_GAT_Transformer/`](benchmark/Xu2026_GAT_Transformer/) | Xu et al. 2026 | *Frontiers in Neurology* | Graph Attention Network + Transformer |
 | [`Ghosh2026_MultiDomain_ML/`](benchmark/Ghosh2026_MultiDomain_ML/) | Ghosh et al. 2026 | *Discover Applied Sciences* | Multi-domain features + Random Forest / KNN / SVM |
 | [`Li2025_CMFViT/`](benchmark/Li2025_CMFViT/) | Li et al. 2025 | *Journal of Translational Medicine* | CNN + Vision Transformer (CMFViT) |
 | [`PSD_LW_DCN_2026/`](benchmark/PSD_LW_DCN_2026/) | Gu et al. 2026 | *Scientific Reports* | PSD + Lightweight 1D-DCN |
-| [`Controlled_DCRNN_TDACNN/`](benchmark/Controlled_DCRNN_TDACNN/) | Tang et al. 2022; Wang et al. 2023 | *ICLR*; *Frontiers in Physiology* | DCRNN dynamic graph baseline and Vietoris-Rips persistence-image CNN |
+| [`Controlled_DCRNN_TDACNN/dcrnn.py`](benchmark/Controlled_DCRNN_TDACNN/dcrnn.py) | Tang et al. 2022 | *ICLR* | DCRNN dynamic graph baseline |
+| [`Controlled_DCRNN_TDACNN/tda_cnn.py`](benchmark/Controlled_DCRNN_TDACNN/tda_cnn.py) | Wang et al. 2023 | *Frontiers in Physiology* | Vietoris-Rips persistence-image CNN |
 
 ---
 
