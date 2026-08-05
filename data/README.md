@@ -32,11 +32,10 @@ per patient and cover both ictal (seizure) and interictal (non-seizure) periods.
 | Property | Value |
 |----------|-------|
 | Subjects | 24 (paediatric) |
-| Total recordings | 664 EDF files |
-| Total duration | ~979 hours |
-| Channels | 18–23 (international 10–20 system) |
+| Files used | 673 EDF |
+| Labeled samples | 3,493,603 (10,927 positive / 3,482,676 negative) |
+| Channels used | 18 bipolar |
 | Sampling rate | 256 Hz |
-| Seizure events | 198 annotated |
 | Format | European Data Format (EDF) |
 
 ### Channel subset used in benchmarks
@@ -91,10 +90,10 @@ neurophysiologists.
 | Property | Value |
 |----------|-------|
 | Subjects | 14 (adults) |
-| Total seizures | 47 annotated |
-| Channels | 19–29 (international 10–20 system) |
+| Files used | 41 EDF |
+| Labeled samples | 9,344 (1,153 positive / 8,191 negative) |
+| Channels used | 16 bipolar |
 | Sampling rate | 512 Hz |
-| Total duration | ~128 hours |
 | Seizure types | Focal, generalised |
 | Format | European Data Format (EDF) |
 
@@ -141,9 +140,10 @@ format. In our benchmarks we use the **2-channel behind-the-ear EEG** modality o
 | Property | Value |
 |----------|-------|
 | Subjects | 125 |
+| Files used | 2,846 EDF |
+| Labeled samples | 578,390 (13,074 positive / 565,316 negative) |
 | Recording centers | 5 (European EMCs) |
 | Focal seizures | 883 annotated |
-| Total duration | >11,000 hours (multimodal) |
 | Channels used | 2 (behind-the-ear EEG) |
 | Sampling rate | 256 Hz |
 | Modalities | EEG, ECG, EMG, movement |
@@ -184,16 +184,15 @@ OpenNeuro DOI: 10.18112/openneuro.ds005873.v1.0.1
 The Temple University Hospital EEG (TUH EEG) corpus is the **largest publicly available
 clinical EEG dataset**, collected from routine EEG recordings at Temple University Hospital.
 The TUSZ (TUH Seizure) subset provides expert-annotated seizure events with detailed
-seizure type labels.
+seizure type labels. Our experiments use a **130-subject subset** under the unified protocol.
 
 | Property | Value |
 |----------|-------|
-| Total patients | 675 |
-| Total sessions | 1,643 |
-| Total recordings | 3,971 seizure events |
-| Total seizure duration | ~1,474 hours |
-| Channels | 20–128 (varies per recording) |
-| Sampling rate | 250 Hz (16-bit) |
+| Subjects used | 130 |
+| Files used | 1,237 EDF |
+| Labeled samples | 149,133 (19,080 positive / 130,053 negative) |
+| Channels used | 20 TCP bipolar |
+| Sampling rate | 250–1000 Hz (mixed: 250, 256, 400, 512, 1000 Hz) |
 | Seizure types | Multiple (FNSZ, GNSZ, ABSZ, etc.) |
 | Format | EDF + TSV annotations |
 
@@ -212,8 +211,8 @@ rsync -auxvL nedc_tuh_eeg@www.isip.piconepress.com:data/tuh_eeg_seizure/ ./data/
 
 ### Version used in benchmarks
 
-Baselines in this repo reference **TUSZ v1.5.1** (or a controlled 20-subject subset for
-reproducible experiments).
+Baselines in this repo reference **TUSZ v1.5.1**, restricted to a controlled **130-subject
+subset** for reproducible experiments under the unified protocol.
 
 ### Citation
 
