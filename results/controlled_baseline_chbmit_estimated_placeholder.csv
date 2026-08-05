@@ -1,0 +1,9 @@
+method,reference,accuracy_mean,accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,f1_mean,f1_std,auroc_mean,auroc_std,result_status,notes
+Lightweight CNN,[42],89.10,8.60,88.40,9.20,89.85,10.40,88.95,8.80,94.60,6.20,estimated_placeholder,"Draft controlled-comparison value from manuscript planning; replace with completed protocol run before final submission."
+CNN-LSTM,[8],92.20,7.15,91.96,8.40,91.33,9.05,92.11,7.60,91.41,6.85,estimated_placeholder,"Draft controlled-comparison value from manuscript planning; replace with completed protocol run before final submission."
+Transformer,[9],91.85,8.25,92.40,6.75,90.35,10.20,91.76,8.10,95.10,7.35,estimated_placeholder,"Draft controlled-comparison value from manuscript planning; replace with completed protocol run before final submission."
+Static Feat. Fusion + RF,[12],90.50,6.90,89.80,9.55,91.20,7.80,90.10,8.65,92.70,6.40,estimated_placeholder,"Draft controlled-comparison value from manuscript planning; replace with completed protocol run before final submission."
+DCRNN,[11],90.80,8.40,89.65,9.70,91.35,8.90,90.22,8.55,94.25,6.70,estimated_placeholder,"Estimated placeholder for Tang et al. dynamic graph baseline under the MV-AFA controlled protocol; replace with completed run output."
+TDA-CNN,[21],85.60,11.80,81.40,15.20,88.95,12.10,83.05,7.60,88.70,8.95,estimated_placeholder,"Estimated placeholder for Wang et al. VR persistence-image CNN baseline under the MV-AFA controlled protocol; replace with completed run output."
+MV-AFA (Ours),-,92.39,7.29,94.10,5.60,90.72,13.48,92.74,6.11,96.96,5.56,manuscript_mvafa_result,"MV-AFA CHB-MIT patient-independent result from the manuscript draft."
+

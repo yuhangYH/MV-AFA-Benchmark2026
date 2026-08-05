@@ -2,7 +2,7 @@
 
 > **MV-AFA Benchmark 2026** · Benchmark Repository
 
-This repository hosts the **benchmark reimplementations** used to evaluate our proposed MV-AFA framework against four state-of-the-art EEG seizure detection methods. Since no baseline code was publicly available, we reimplemented each model from its reported architectural details. All methods were evaluated under a unified protocol covering preprocessing, channel selection, windowing, and data partitioning, with baseline architectures preserved as published. 
+This repository hosts the **benchmark reimplementations** used to evaluate our proposed MV-AFA framework against six representative EEG seizure detection model families. Since no baseline code was publicly available for several methods, we reimplemented each model from its reported architectural details. All controlled baselines are intended to run under a unified protocol covering preprocessing, channel selection, windowing, subject-level data partitioning, and metric computation, with baseline architectures preserved as closely as possible to the original publications.
 (As the work is still unpublished, the model details and the contents of the manuscript are being kept confidential.)
 
 ---
@@ -52,7 +52,7 @@ The output is a continuous **Seizure Score** (risk score ∈ [0, 1]), enabling b
 
 ## Benchmark Methods
 
-Four representative prior works are reproduced as controlled baselines. Each method is implemented in its own subfolder under [`benchmark/`](benchmark/).
+Six representative prior works are reproduced as controlled baselines. Each method is implemented in its own subfolder under [`benchmark/`](benchmark/).
 
 | Folder | Paper | Venue | Model |
 |--------|-------|-------|-------|
@@ -60,6 +60,7 @@ Four representative prior works are reproduced as controlled baselines. Each met
 | [`Ghosh2026_MultiDomain_ML/`](benchmark/Ghosh2026_MultiDomain_ML/) | Ghosh et al. 2026 | *Discover Applied Sciences* | Multi-domain features + Random Forest / KNN / SVM |
 | [`Li2025_CMFViT/`](benchmark/Li2025_CMFViT/) | Li et al. 2025 | *Journal of Translational Medicine* | CNN + Vision Transformer (CMFViT) |
 | [`PSD_LW_DCN_2026/`](benchmark/PSD_LW_DCN_2026/) | Gu et al. 2026 | *Scientific Reports* | PSD + Lightweight 1D-DCN |
+| [`Controlled_DCRNN_TDACNN/`](benchmark/Controlled_DCRNN_TDACNN/) | Tang et al. 2022; Wang et al. 2023 | *ICLR*; *Frontiers in Physiology* | DCRNN dynamic graph baseline and Vietoris-Rips persistence-image CNN |
 
 ---
 
@@ -95,9 +96,20 @@ MV-AFA-EEG-Seizure-Benchmark/
 │   ├── Li2025_CMFViT/
 │   │   ├── README.md
 │   │   └── baseline_li_cmfvit_chbmit.py
-│   └── PSD_LW_DCN_2026/
+│   ├── PSD_LW_DCN_2026/
+│   │   ├── README.md
+│   │   └── baseline_psd_lw_dcn_chbmit.py
+│   └── Controlled_DCRNN_TDACNN/
 │       ├── README.md
-│       └── baseline_psd_lw_dcn_chbmit.py
+│       ├── dcrnn.py
+│       ├── tda_cnn.py
+│       ├── protocol.py
+│       ├── run_baseline.py
+│       └── export_cache_to_npz.py
+├── results/
+│   ├── README.md
+│   ├── controlled_baseline_chbmit_estimated_placeholder.csv
+│   └── controlled_baseline_chbmit_estimated_placeholder.tex
 └── data/
     └── README.md                          ← Dataset descriptions & download links
 ```
@@ -107,7 +119,7 @@ MV-AFA-EEG-Seizure-Benchmark/
 ## Environment Setup
 
 ```bash
-pip install torch torchvision mne numpy scipy scikit-learn pywavelets pandas matplotlib
+pip install torch torchvision mne numpy scipy scikit-learn pywavelets pandas matplotlib ripser
 ```
 
 For the GAT+Transformer baseline, also install:
@@ -145,7 +157,21 @@ python benchmark/PSD_LW_DCN_2026/baseline_psd_lw_dcn_chbmit.py \
     --data_dir ./data/CHB-MIT-scalp-eeg-database-1.0.0 \
     --split_mode loocv --test_subject chb01 \
     --output_dir ./outputs/psd_lw_dcn
+
+# DCRNN dynamic graph baseline — patient-independent split
+python benchmark/Controlled_DCRNN_TDACNN/run_baseline.py \
+    --model dcrnn --cache ./data/chbmit_windows.npz --protocol pi \
+    --threshold sens_floor_spec --min_sens 0.70 \
+    --out ./outputs/dcrnn_chbmit_pi.json
+
+# TDA-CNN baseline — patient-independent split
+python benchmark/Controlled_DCRNN_TDACNN/run_baseline.py \
+    --model tda_cnn --cache ./data/chbmit_windows.npz --protocol pi \
+    --threshold sens_floor_spec --min_sens 0.70 \
+    --out ./outputs/tda_cnn_chbmit_pi.json
 ```
+
+The draft CHB-MIT comparison table in [`results/`](results/) contains estimated placeholder values from the manuscript planning stage. Replace those files with completed JSON/CSV outputs from protocol-compatible runs before using the numbers in a submission.
 
 ---
 

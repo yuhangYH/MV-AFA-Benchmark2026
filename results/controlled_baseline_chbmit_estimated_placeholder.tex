@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Controlled baseline comparison on CHB-MIT under the patient-independent protocol, on class-balanced held-out test windows. Values are draft estimated placeholders from manuscript planning and must be replaced by completed protocol-compatible runs before final submission.}
+\label{tab:controlled_baseline_chbmit_placeholder}
+\begin{tabular}{llccccc}
+\toprule
+Method & Reference & Acc. & Sens. & Spec. & F1 & AUROC \\
+\midrule
+Lightweight CNN & [42] & $89.10 \pm 8.60$ & $88.40 \pm 9.20$ & $89.85 \pm 10.40$ & $88.95 \pm 8.80$ & $94.60 \pm 6.20$ \\
+CNN--LSTM & [8] & $92.20 \pm 7.15$ & $91.96 \pm 8.40$ & $91.33 \pm 9.05$ & $92.11 \pm 7.60$ & $91.41 \pm 6.85$ \\
+Transformer & [9] & $91.85 \pm 8.25$ & $92.40 \pm 6.75$ & $90.35 \pm 10.20$ & $91.76 \pm 8.10$ & $95.10 \pm 7.35$ \\
+Static Feat. Fusion + RF & [12] & $90.50 \pm 6.90$ & $89.80 \pm 9.55$ & $91.20 \pm 7.80$ & $90.10 \pm 8.65$ & $92.70 \pm 6.40$ \\
+DCRNN & [11] & $90.80 \pm 8.40$ & $89.65 \pm 9.70$ & $91.35 \pm 8.90$ & $90.22 \pm 8.55$ & $94.25 \pm 6.70$ \\
+TDA-CNN & [21] & $85.60 \pm 11.80$ & $81.40 \pm 15.20$ & $88.95 \pm 12.10$ & $83.05 \pm 7.60$ & $88.70 \pm 8.95$ \\
+\textbf{MV-AFA (Ours)} & -- & $\mathbf{92.39 \pm 7.29}$ & $\mathbf{94.10 \pm 5.60}$ & $\mathbf{90.72 \pm 13.48}$ & $\mathbf{92.74 \pm 6.11}$ & $\mathbf{96.96 \pm 5.56}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
