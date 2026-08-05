@@ -1,7 +1,20 @@
 # Datasets
 
-Three publicly available EEG datasets are used across the MV-AFA paper and its benchmarks.
+Four publicly available EEG datasets are used across the MV-AFA paper and its benchmarks.
 None of the raw data is included in this repository — download instructions are provided below.
+
+## Labeled samples used in the analysis
+
+The table below reports the labeled sample counts actually used in our experiments, taken
+from the experimental metadata **after dataset-specific channel adaptation**. TUSZ contains
+mixed sampling rates in this subset: 250, 256, 400, 512, and 1000 Hz.
+
+| Dataset | Subjects | Files | Total samples | Positive | Negative | Rate (Hz) | Channels |
+|---------|----------|-------|---------------|----------|----------|-----------|----------|
+| CHB-MIT | 24 | 673 EDF | 3,493,603 | 10,927 | 3,482,676 | 256 | 18 bipolar |
+| Siena | 14 | 41 EDF | 9,344 | 1,153 | 8,191 | 512 | 16 bipolar |
+| SeizeIT2 | 125 | 2,846 EDF | 578,390 | 13,074 | 565,316 | 256 | 2 EEG |
+| TUSZ | 130 | 1,237 EDF | 149,133 | 19,080 | 130,053 | 250–1000 | 20 TCP bipolar |
 
 ---
 
@@ -112,7 +125,57 @@ Processes 8(7):846. doi: 10.3390/pr8070846
 
 ---
 
-## 3. Temple University Hospital EEG Seizure Corpus (TUSZ)
+## 3. SeizeIT2
+
+**Used by:** MV-AFA (multi-center wearable EEG evaluation)
+
+### Description
+
+SeizeIT2 is the first large open dataset of **wearable** data recorded in patients with
+focal epilepsy. It comprises more than **11,000 hours of multimodal data** — behind-the-ear
+electroencephalography (EEG), electrocardiography (ECG), electromyography (EMG), and movement
+signals — collected from **125 patients** across five European Epilepsy Monitoring Centers,
+with **883 annotated focal seizures**. Data are stored in Brain Imaging Data Structure (BIDS)
+format. In our benchmarks we use the **2-channel behind-the-ear EEG** modality only.
+
+| Property | Value |
+|----------|-------|
+| Subjects | 125 |
+| Recording centers | 5 (European EMCs) |
+| Focal seizures | 883 annotated |
+| Total duration | >11,000 hours (multimodal) |
+| Channels used | 2 (behind-the-ear EEG) |
+| Sampling rate | 256 Hz |
+| Modalities | EEG, ECG, EMG, movement |
+| Format | BIDS (EDF) |
+
+### Download
+
+**OpenNeuro (free, open access) — accession `ds005873`:**
+> https://openneuro.org/datasets/ds005873
+
+```bash
+# Via the OpenNeuro CLI
+npx @openneuro/cli download --snapshot 1.0.1 ds005873 ./data/seizeit2
+
+# Or via DataLad
+datalad install https://github.com/OpenNeuroDatasets/ds005873.git ./data/seizeit2
+datalad get ./data/seizeit2
+```
+
+### Citation
+
+```
+Bhagubai M, Chatzichristos C, Swinnen L, Macea J, Zhang J, Lagae L, Jansen K,
+Schulze-Bonhage A, Sales F, Mahler B, Weber Y, Van Paesschen W, De Vos M (2025).
+SeizeIT2: Wearable Dataset Of Patients With Focal Epilepsy.
+Scientific Data. doi: 10.1038/s41597-025-05580-x
+OpenNeuro DOI: 10.18112/openneuro.ds005873.v1.0.1
+```
+
+---
+
+## 4. Temple University Hospital EEG Seizure Corpus (TUSZ)
 
 **Used by:** Xu 2026 (TUH), PSD-LW-DCN 2026 (TUSZ) + MV-AFA
 
@@ -179,6 +242,10 @@ data/
 ├── siena-scalp-eeg-1.0.0/                ← Siena EDF files
 │   ├── PN00/
 │   ├── PN01/
+│   └── ...
+├── seizeit2/                              ← SeizeIT2 (OpenNeuro ds005873, BIDS)
+│   ├── sub-001/
+│   ├── sub-002/
 │   └── ...
 └── tusz/                                  ← TUSZ EDF + annotation files
     ├── train/

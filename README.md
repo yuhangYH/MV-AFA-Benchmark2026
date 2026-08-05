@@ -65,13 +65,16 @@ Four representative prior works are reproduced as controlled baselines. Each met
 
 ## Datasets
 
-Three publicly available EEG datasets are used. See [`data/README.md`](data/README.md) for full descriptions and download instructions.
+Four publicly available EEG datasets are used. See [`data/README.md`](data/README.md) for full descriptions and download instructions.
 
-| Dataset | Subjects | Channels | Sampling Rate | Task |
-|---------|----------|----------|---------------|------|
-| **CHB-MIT** | 24 paediatric | 18–23 | 256 Hz | Seizure detection |
-| **Siena Scalp EEG** | 14 adults | 19–29 | 512 Hz | Seizure detection |
-| **TUSZ (TUH)** | 675 | 20–128 | 250 Hz | Seizure detection |
+The counts below are the labeled sample counts actually used in the analysis, reported after dataset-specific channel adaptation. TUSZ contains mixed sampling rates in this subset (250, 256, 400, 512, and 1000 Hz).
+
+| Dataset | Subjects | Files | Total samples | Positive | Negative | Rate (Hz) | Channels |
+|---------|----------|-------|---------------|----------|----------|-----------|----------|
+| **CHB-MIT** | 24 | 673 EDF | 3,493,603 | 10,927 | 3,482,676 | 256 | 18 bipolar |
+| **Siena** | 14 | 41 EDF | 9,344 | 1,153 | 8,191 | 512 | 16 bipolar |
+| **SeizeIT2** | 125 | 2,846 EDF | 578,390 | 13,074 | 565,316 | 256 | 2 EEG |
+| **TUSZ (TUH)** | 130 | 1,237 EDF | 149,133 | 19,080 | 130,053 | 250–1000 | 20 TCP bipolar |
 
 ---
 
