@@ -1,6 +1,6 @@
 # MV-AFA: Interpretable Topology-Aware Multi-View Adaptive Fusion Attention for EEG Seizure Detection
 
-> **BioCAS 2026 Submission** · Benchmark Repository
+> **MV-AFA Benchmark 2026** · Benchmark Repository
 
 This repository hosts the **benchmark reimplementations** used to evaluate our proposed MV-AFA framework against four state-of-the-art EEG seizure detection methods. Since no baseline code was publicly available, we reimplemented each model from its reported architectural details. All methods were evaluated under a unified protocol covering preprocessing, channel selection, windowing, and data partitioning, with baseline architectures preserved as published. 
 (As the work is still unpublished, the model details and the contents of the manuscript are being kept confidential.)
